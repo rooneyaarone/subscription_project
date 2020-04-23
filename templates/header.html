@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Title</title>
+</head>
+<body bgcolor="#87cefa">
+ <nav class="blue">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo">JuicyBeats</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+          {% if user.is_authenticated %}
+              <li><a href="/manage_account">{{user.username}}</a></li>
+              <li><a href="/logout">Logout</a></li>
+              <li><a href="/stream">Stream</a></li>
+          {% else %}
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+          {% endif %}
+      </ul>
+    </div>
+  </nav>
+ {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{  message.tags }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+ {% endif %}
+<br><br>
+<div class="container" style="alignment: center">
+    {%block content%}
+    {% endblock %}
+</div>
+</body>
+</html>

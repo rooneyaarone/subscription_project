@@ -1,0 +1,11 @@
+{% extends 'header.html' %}
+
+{% block content %}
+    <div class="content-section" style="background-color: white">
+        <form method="POST">
+            {% csrf_token %}
+           {{ form }}
+            <button class="btn btn-outline-info" type="submit">confirm</button>
+        </form>
+    </div>
+{% endblock %}
